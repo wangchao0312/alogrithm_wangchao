@@ -29,20 +29,34 @@ public class Merge_sort {
             }
         }
     }
-
     /**
      * 递归
      * @param arr
      */
     public static void mergeSort(int[] arr,int l,int r){
+        /* if(r-l<=15)
+        * 调用插入排序；数量小的时候可以用插入排序来做
+        * */
         if(l>=r)
             return;
         int mid=(l+r)/2;
+
         mergeSort(arr,l,mid);
         mergeSort(arr,mid+1,r);
+        /*改进的归并算法*/
+        if(arr[mid]<arr[mid+1])
         merge(arr,mid,l,r);
 }
 
+    /**
+     * 自底向上的归并算法
+     * @param arr
+     */
+    public static void mergrSortBU(int[]arr)
+    {
+
+
+    }
     public static void main(String[] args){
         int[] array={10,9,8,7,6,5,4,3,2,1};
         for(int i=0;i<array.length;i++)
