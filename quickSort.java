@@ -1,7 +1,12 @@
 package paixu.alogrithm_wangchao;
 
-public class quickSort {
+public class quickSort{
+    /*
+    *
+    *改进的算法，原来为选取第一个元素，现在为选取随机元素
+    * */
     public static int partition(int[] arr,int l,int r){
+        swap(arr,l,(int)(Math.random()*(r-l+1)+l));
         int v=arr[l];
         int j=l;
         for(int i=l+1;i<=r;i++)
@@ -10,6 +15,31 @@ public class quickSort {
              j++;
                 swap(arr, i, j);
             }
+        }
+        swap(arr,l,j);
+        return j;
+    }
+
+    /**
+     * 将相等的元素分布在数组俩侧，将不会导致n方的时间复杂度
+     * @param arr
+     * @param l
+     * @param r
+     */
+    public static int partition2(int[] arr,int l,int r){
+        swap(arr,l,(int)(Math.random()*(r-l+1)+l));
+        int v=arr[l];
+        int i=l+1,j=r;
+        while(true){
+            while(i<=r&&arr[i]<v)
+                i++;
+            while(j>=l+1&&arr[j]>v)
+                j--;
+            if(i>j)
+                break;
+            swap(arr,i,j);
+            i++;
+            j--;
         }
         swap(arr,l,j);
         return j;
@@ -41,6 +71,6 @@ public class quickSort {
             System.out.println(array[i]);
     }
 
-}
+} 
 
 
